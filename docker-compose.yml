@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  proxy-pac:
+    image: node:14.17.3-alpine3.14
+    working_dir: /app
+    command: ["node", "server.js"]
+    restart: always
+    volumes:
+      - ./:/app
+    ports:
+      - "8181:8080"
+    networks:
+      - proxy-pac-net
+
+networks:
+  proxy-pac-net:
+    driver: bridge
+
